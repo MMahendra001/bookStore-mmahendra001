@@ -29,4 +29,4 @@ I am still working on this project but here are some links :
 
 This is Vercel Deploy  [link ](https://great-read.vercel.app/ )
 
-This is Netlify Deploy [link] (https://great-reads-mmahendra001.netlify.app/)
+This is Netlify Deploy [link](https://great-reads-mmahendra001.netlify.app/)
