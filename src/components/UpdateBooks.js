@@ -16,6 +16,7 @@ export default function UpdateBooks() {
     <>
       <section>
         <div className="container">
+          <h1>Update your Book Here</h1>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
@@ -108,7 +109,7 @@ export default function UpdateBooks() {
                   </label>
                 </div>
               </div>
-              <button type="submit">+ Update Books</button>
+              <button type="submit">Update Book</button>
             </fieldset>
           </form>
         </div>

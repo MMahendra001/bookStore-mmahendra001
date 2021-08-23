@@ -107,7 +107,6 @@
 	------------------------------------------------------------------------------*/
   header {
     padding: 20px 0;
-    background: transparent;
   }
 
   header nav li a {
@@ -115,9 +114,12 @@
   }
 
   header .logo {
-    width: 50%;
+    width: 30%;
   }
 
+  header nav {
+    width: 70%;
+}
 }
 
 @media only screen and (max-width:767px) {
@@ -241,8 +243,22 @@
     width: 5px;
     height: 10px;
     left: 1px;
-    top: 4px;
+    top: 6px;
   }
+
+  header nav ul li {padding: 28px 20px;}
+
+  section {
+    padding: 50px 0px;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+footer p {
+  font-size: 18px;
+}
 }
 
 @media only screen and (max-width:640px) {
@@ -286,6 +302,21 @@
     padding-left: 0px;
   }
 
+  header .logo {
+    width: 100%;
+    text-align: center;
+}
+
+header nav {
+  width: 100%;
+}
+header nav {
+  width: 100%;
+}
+header nav ul{justify-content: center;}
+footer p {
+  font-size: 16px;
+}
 
 }
 
@@ -295,7 +326,7 @@
 ------------------------------------------------------------------------------*/
   .h1,
   h1 {
-    font-size: 27px;
+    font-size: 24px;
   }
 
   .h2,
@@ -331,4 +362,28 @@
     font-size: 15px;
   }
 
+  header nav ul li {
+    padding: 15px 5px;
+}
+
+section h1,section.login-page h1 {
+  margin-bottom: 30px;
+}
+section.login-page .info {
+  margin-bottom: 50px;
+}
+section {
+  margin-bottom: 15px;
+}
+form{
+  padding: 30px 20px;
+}
+
+}
+
+@media only screen and (max-width:400px) {
+header nav ul {
+  justify-content: center;
+  flex-direction: column;
+}
 }

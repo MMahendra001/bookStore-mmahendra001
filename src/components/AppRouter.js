@@ -8,6 +8,7 @@ import UpdateBooks from './UpdateBooks';
 import useLocalStorage from '../lib/useLocalStorage';
 import BookList from './BookList';
 import BookContext from '../context/BookContext';
+import Footer from './Footer';
 
 const AppRouter = function () {
   const [books, setBooks] = useLocalStorage('books', []);
@@ -27,6 +28,7 @@ const AppRouter = function () {
           </Switch>
         </BookContext.Provider>
       </BrowserRouter>
+      <Footer />
     </>
   );
 };

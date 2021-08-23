@@ -5,7 +5,7 @@ const Header = () => (
   <header>
     <div className="container">
       <div className="logo">
-        <NavLink to="/list" exact>
+        <NavLink to="/" exact>
           <span>Great</span>Reads
         </NavLink>
       </div>
@@ -23,7 +23,7 @@ const Header = () => (
           </li>
           <li>
             <NavLink to="/update/id" activeClassName="active">
-              Edit Books
+              Update Books
             </NavLink>
           </li>
         </ul>

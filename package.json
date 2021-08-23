@@ -109,9 +109,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "bugs": {
-    "url": "https://github.com/MMahendra001/bookStore-mmahendra001/issues"
-  },
-  "homepage": "https://github.com/MMahendra001/bookStore-mmahendra001#readme"
+  }
 }

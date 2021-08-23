@@ -2,7 +2,7 @@
 
 /* -- -- .- .... . -. -.. .-. .- ----- ----- .---- */
 
-/*-----------------------------------------------------Social Media Agency --------------------------------------------------------*/
+/*-----------------------------------------------------Book App --------------------------------------------------------*/
 
 
 /* CSS Document */
@@ -106,6 +106,8 @@ html,
 body {
   -webkit-text-size-adjust: none;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 article,
@@ -375,9 +377,9 @@ input[type="submit"] {
   text-align: center;
   text-transform: inherit;
   color: #fff;
-  background-color: #2500f9;
+  background-color: #0079ff;
   letter-spacing: unset;
-  border: 2px solid #2500f9;
+  border: 2px solid #0079ff;
   border-radius: 50px;
   transition: all ease 0.3s;
   font-weight: bold;
@@ -387,11 +389,12 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  color: #2500f9;
+  color: #0079ff;
   background-color: #0000;
-  border-color: #2500f9;
+  border-color: #0079ff;
   text-decoration: none;
   outline: none;
+  cursor:pointer;
 }
 
 input[type="search"] {
@@ -823,4 +826,86 @@ header nav ul li a:hover {
 
 .heading {
   text-align: center;
+}
+
+section {
+  padding: 100px 0px;
+}
+
+section .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: center;
+  background: #0079ff;
+  padding: 20px 10px;
+}
+
+footer p {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+
+element.style {
+}
+footer p a {
+  color: #fff;
+}
+footer p a:hover {
+  color: #263546;
+}
+
+form {
+  position: relative;
+  padding:50px 30px;
+  box-shadow: 0 15px 60px 4px rgb(0 0 0 / 7%);
+  border-radius:10px;
+  background: #fff;
+  z-index:initial;
+}
+
+form:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  bottom: 44px;
+  left: 0;
+  right: 0;
+  width: 85%;
+  height: 85%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  box-shadow: 0 13px 90px 45px rgb(0 156 255);
+  -webkit-box-shadow: 0 13px 90px 45px rgb(0 156 255);
+  -moz-box-shadow: 0 13px 90px 45px rgba(0,156,255,1);
+  margin: 0 auto;
+}
+
+section h1 {
+  margin-bottom: 70px;
+}
+
+section.login-page h1 {
+margin-bottom:50px;
+}
+section.login-page .info{
+  margin-bottom:70px;
+}
+section  {
+  margin-bottom:30px;
+}
+
+section.login-page form::after {
+  left: 0;
+  bottom: 73px;
+  width: 80%;
+  height: 50%;
+}
+
+section.login-page .info h5 {
+  font-weight:300;
 }

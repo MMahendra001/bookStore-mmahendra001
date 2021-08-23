@@ -10,12 +10,13 @@ export default function AddBooks() {
     <>
       <section>
         <div className="container">
+          <h1>Add New Books Here</h1>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
               clearForm();
               console.log(inputs);
-              history.push(`/`);
+              history.push(`/list`);
             }}
           >
             <fieldset>
@@ -84,7 +85,7 @@ export default function AddBooks() {
                       id="ratings"
                       name="ratings"
                       placeholder="4"
-                      value={inputs.price}
+                      value={inputs.ratings}
                       onChange={handleChange}
                     />
                   </label>
