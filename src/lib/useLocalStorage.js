@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useLocalStorage = (key, initialValue) => {
+  // console.log(`atLocal${JSON.stringify(initialValue}${typeof initialValue}`);
   const [value, setValue] = useState(() => {
     try {
       const localValue = window.localStorage.getItem(key);

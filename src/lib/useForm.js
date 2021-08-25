@@ -26,7 +26,7 @@ export default function useForm(initial = {}) {
   // we might need some methods and handlers to deal with form after we are done with it.
   function handleChange(e) {
     let { value, name, type } = e.target;
-    if (type === 'number') {
+    if (type === 'number' && value === 'NaN') {
       value = parseInt(value);
     }
     if (type === 'file') {

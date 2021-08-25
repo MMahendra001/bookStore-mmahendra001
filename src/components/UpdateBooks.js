@@ -87,13 +87,17 @@ export default function UpdateBooks() {
                   <label htmlFor="ratings">
                     Ratings
                     <input
-                      type="number"
+                      type="range"
                       id="ratings"
                       name="ratings"
-                      placeholder="4"
-                      value={inputs.price}
+                      placeholder="5"
+                      min="0"
+                      max="5"
+                      step="0.1"
+                      value={inputs.ratings}
                       onChange={handleChange}
                     />
+                    {inputs.ratings}
                   </label>
                 </div>
                 <div className="form-group right">
