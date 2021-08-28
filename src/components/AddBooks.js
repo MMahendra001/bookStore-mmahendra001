@@ -90,7 +90,7 @@ and handleChange will handle the each inputs state as it getting updated.
         ratings,
         price,
         desc,
-        image: './images/book-cover-placeholder.jpg',
+        image: '/images/book-cover-placeholder.jpg',
       };
       // here you will pass data to upper state with props( we will use context api)
       // console.log(props);

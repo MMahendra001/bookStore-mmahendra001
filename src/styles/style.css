@@ -336,6 +336,10 @@ textarea {
   border-radius: 50px;
 }
 
+input[type="range"] {
+  cursor: pointer;
+}
+
 textarea {
   height: 150px;
   resize: none;
@@ -1012,4 +1016,67 @@ section.login-page .info h5 {
   padding: 2px 5px;
   font-size: 10px;
   font-weight: 600;
+}
+
+.books-single-page .single-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.books-single-page .book-image {
+  width: 40%;
+}
+
+.books-single-page .book-info {
+  width: 60%;
+  padding: 50px;
+  position:relative;
+}
+
+.books-single-page .book-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.books-single-page .single-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 15px 60px 4px rgb(0 0 0 / 7%);
+  border-radius: 15px;
+}
+
+.single-wrap:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  width: 80%;
+  height: 60%;
+  border-radius: 100%;
+  box-shadow: 0 13px 90px 45px rgb(0 156 255);
+  margin: 0 auto;
+}
+
+.books-single-page .book-image img {
+  width:100%;
+  min-height: 450px;
+  max-height: 450px;
+}
+
+
+
+.books-single-page .book-info button.update {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 0;
+  border-bottom-right-radius: 15px;
+  outline:none;
 }

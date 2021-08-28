@@ -21,11 +21,11 @@ const Header = () => (
               Add Books
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/update/id" activeClassName="active">
               Update Books
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
