@@ -154,7 +154,7 @@ export default function UpdateBooks({ match, location }) {
 
       updateBooks(bookIndex, updatedBook);
     } else {
-      errorMessage = `You are not allowed to delete existing data but you can update all them,try again.`;
+      errorMessage = `You are not allowed to delete existing data but you can update all of them,try again.`;
     }
     setErrorMsg(errorMessage);
   }

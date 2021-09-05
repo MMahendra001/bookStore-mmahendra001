@@ -17,7 +17,6 @@ const AppRouter = function () {
   const [user, setUser] = useLocalStorage('user', {
     userName: '',
     password: '',
-    isLoggedIn: false,
   });
 
   function removeBook(bookId, booksState, setBooksState) {

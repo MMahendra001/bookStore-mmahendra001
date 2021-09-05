@@ -7,7 +7,7 @@ export default function useForm(initial = {}) {
 
   useEffect(() => {
     // Whenever the initial values what we passed in will change it will trigger this and set our inputs values with updated one.
-    // similar to lifecycle method  like componetDidUpdate in class based function.
+    // similar to lifecycle method  like componentDidUpdate in class based function.
     setInputs(initial);
     // eslint-disable-next-line
   }, [initialValues]);
@@ -25,13 +25,18 @@ export default function useForm(initial = {}) {
 
   // we might need some methods and handlers to deal with form after we are done with it.
   function handleChange(e) {
-    let { value, name, type } = e.target;
+    let { value, name, type, checked } = e.target;
     if (type === 'number' && value === 'NaN') {
       value = parseInt(value);
     }
     if (type === 'file') {
       [value] = e.target.files;
     }
+
+    if (type === 'checkbox') {
+      value = checked;
+    }
+
     setInputs({
       // copy the existing state
       ...inputs,

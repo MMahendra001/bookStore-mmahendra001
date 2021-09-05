@@ -1,14 +1,26 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import useForm from '../lib/useForm';
+import BookContext from '../context/BookContext';
 
 export default function Login() {
-  const { inputs, handleChange, clearForm } = useForm({
+  const { inputs, handleChange, clearForm, resetForm } = useForm({
     username: '',
     password: '',
+    remember: false, // checkbox on click it will 'ok' or ''
   });
-  console.log(inputs);
+
   const history = useHistory();
+  const { books } = useContext(BookContext);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    clearForm();
+    console.log(inputs);
+    // history.push(`/list`);
+    resetForm();
+  }
+
   return (
     <>
       <section className="login-page">
@@ -25,14 +37,7 @@ export default function Login() {
             </h5>
             <h5>Read,Think and Code. #happyCoding</h5>
           </div>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              clearForm();
-              console.log(inputs);
-              history.push(`/list`);
-            }}
-          >
+          <form onSubmit={handleSubmit} autoComplete="off">
             <fieldset>
               <div className="form-group-wrap">
                 <div className="form-group left">
@@ -50,14 +55,14 @@ export default function Login() {
                   </label>
                 </div>
                 <div className="form-group right">
-                  <label htmlFor="author">
+                  <label htmlFor="password">
                     Password
                     <input
                       type="text"
-                      id="author"
-                      name="author"
+                      id="password"
+                      name="password"
                       placeholder="Enter your password"
-                      value={inputs.author}
+                      value={inputs.password}
                       onChange={handleChange}
                       required
                     />
@@ -69,6 +74,8 @@ export default function Login() {
                   type="checkbox"
                   id="remember"
                   name="remember"
+                  defaultChecked={inputs.remember}
+                  value={inputs.remember}
                   onChange={handleChange}
                 />
                 {/* eslint-disable-next-line  */}
