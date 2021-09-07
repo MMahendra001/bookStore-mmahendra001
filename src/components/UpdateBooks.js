@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router';
 import wait from 'waait';
 import BookContext from '../context/BookContext';
@@ -40,6 +41,7 @@ export default function UpdateBooks({ match, location }) {
   // let's gets oll values with object destructuring : order matters when you reset it in state so maintain the orders.
   wait(2000);
   const {
+    _id, // only use mongoDB _id for CRUD operations vs normal local id
     id,
     title,
     author,
@@ -80,7 +82,7 @@ export default function UpdateBooks({ match, location }) {
   // 2
   const { inputs, handleChange } = useForm({
     // eslint-disable-next-line
-    id:id ,
+    id:id,
     title, // our key and value we are setting it to has same name to it's variable so we can just write it like this
     author,
     category,
@@ -105,9 +107,7 @@ export default function UpdateBooks({ match, location }) {
 
     // 4
     // update our main state with this new updated booksState
-
     setBooks(booksState);
-
     // wait for 1s then redirect user to the bookSingle page where they can see their updates:
     await wait(1000);
     // and single page need to know it's coming from update page so set location state to current path when you push it.
@@ -120,7 +120,7 @@ export default function UpdateBooks({ match, location }) {
   }
 
   // 3.
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     // Prevent default action of form.
     e.preventDefault();
     let errorMessage = '';
@@ -145,6 +145,15 @@ export default function UpdateBooks({ match, location }) {
       };
 
       // console.log(updatedBook); // got it
+
+      // Update book to database
+      console.log(id);
+      await axios
+        .post(`http://localhost:5000/books/update/${_id}`, updatedBook)
+        .then((res) => console.log(res.data))
+        .catch((error) => {
+          console.log(error);
+        });
 
       // What book you want to update? : find index of the book from books array (main books state )
       const bookIndex = books.findIndex((book) => book.id === bookId);

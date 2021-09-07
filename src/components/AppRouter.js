@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import AddBooks from './AddBooks';
 import BookSingle from './BookSingle';
@@ -13,13 +14,37 @@ import sampleBooks from '../sample-books';
 
 const AppRouter = function () {
   // This is custom hook for our local storage
-  const [books, setBooks] = useLocalStorage('books', [...sampleBooks]);
+  // const [books, setBooks] = useLocalStorage('books', [...sampleBooks]);
   const [user, setUser] = useLocalStorage('user', {
     userName: '',
     password: '',
   });
 
-  function removeBook(bookId, booksState, setBooksState) {
+  const [books, setBooks] = useState([]);
+  console.log('books', books);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/books/', {
+        params: {
+          _limit: 3,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setBooks([...response.data]);
+        // console.log('databook', books);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  async function removeBook(bookId, bookID, booksState, setBooksState) {
+    // await axios
+    //   .delete(`http://localhost:5000/books/${bookId}`)
+    //   .then((res) => console.log(res.data));
+
     const filteredBookState = booksState.filter((booksObj) => {
       // console.log(booksObj);
       if (booksObj.id !== bookId) {
@@ -27,6 +52,17 @@ const AppRouter = function () {
       }
       return false;
     });
+
+    // Delete Book from database
+    axios
+      .delete(`http://localhost:5000/books/${bookID}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     return setBooksState(filteredBookState);
   }
 

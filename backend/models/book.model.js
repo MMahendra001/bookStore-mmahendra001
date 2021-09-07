@@ -6,11 +6,12 @@ const bookSchema = new Schema(
   {
     id: { type: String, required: true },
     title: { type: String, required: true },
-    price: { type: Number, required: true },
     author: { type: String, required: true },
     category: { type: String, required: true },
     ratings: { type: Number, required: true },
+    price: { type: Number, required: true },
     desc: { type: String, required: true },
+    image: { type: String, required: true },
   },
   {
     timestamps: true,

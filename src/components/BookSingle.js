@@ -106,7 +106,10 @@ export default function BookSingle({ history, match, location }) {
             <div className="single-wrap">
               <div className="book-image">
                 <figure>
-                  <img src={book.image} alt={book.title} />
+                  <img
+                    src={book.image || '/images/book-cover-placeholder.jpg'}
+                    alt={book.title}
+                  />
                 </figure>
               </div>
               <div className="book-info">

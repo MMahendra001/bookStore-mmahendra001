@@ -1,6 +1,7 @@
 /* eslint-disable  */
-
 import React from 'react';
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import {formatePrice} from '../utils/helpers';
 import { NavLink, useHistory } from 'react-router-dom';
 import sampleBooks from '../sample-books';
@@ -10,13 +11,35 @@ export default function BookList(props) {
   const setBooks = props.setBooks;
   const removeBook = props.removeBook;
 
-  function addBooksSamples(setbooks, samplebooks) {
-    return setbooks([...samplebooks]);
+  function addBooksSamples(samplebooks) {
+    samplebooks.map(book => {
+      // Add books to database
+        return  axios
+          .post('http://localhost:5000/books/add', book)
+          .then((res) => console.log(res.data));
+    })
+
+      // Get books from database
+      axios
+      .get('http://localhost:5000/books/',{
+        params: {
+          _limit: 3,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setBooks([...response.data]);
+        console.log('databook', books);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
 
   let loadSamples;
   let loadSamplesBtn = <button type="button"
-                                onClick={() => addBooksSamples(setBooks, sampleBooks)}>Add Books Samples
+                                onClick={() => addBooksSamples(sampleBooks)}>Add Books Samples
                         </button>
 
   if (!books.length) {
@@ -70,7 +93,7 @@ function BookListEl(props){
       <div className="book-img">
         <NavLink to={`/book/${book.id}`} className="img-link">
           <figure>
-            <img src={book.image} alt={book.title} />
+            <img src={book.image || '/images/book-cover-placeholder.jpg'} alt={book.title} />
           </figure>
         </NavLink>
         <span className="price">{formatePrice(book.price)}</span>
@@ -84,7 +107,7 @@ function BookListEl(props){
         </div>
         <div className="btn-warp">
           {/* removeBook(book.id,books,setBooks) */}
-          <button type="button" className="delete" onClick={() =>  removeBook(book.id,books,setBooks)}>Remove</button>
+          <button type="button" className="delete" onClick={() =>  removeBook(book.id,book._id,books,setBooks)}>Remove</button>
           <button type="button" className="update" onClick={() => history.push(`/update/${book.id}`)}>Update</button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 import useForm from '../lib/useForm';
@@ -97,6 +98,12 @@ and handleChange will handle the each inputs state as it getting updated.
       console.log(book);
       // [...], {...} is spread operator vs concat but in fun(...) it's rest param.
       setBooks([...books, book]);
+
+      // Add book to database
+      axios
+        .post('http://localhost:5000/books/add', book)
+        .then((res) => console.log(res.data));
+
       history.push(`/list`);
     } else {
       errorMessage = 'Please provide all the data.';
