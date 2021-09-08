@@ -1080,3 +1080,38 @@ section.login-page .info h5 {
   border-bottom-right-radius: 15px;
   outline:none;
 }
+
+/* Pagination */
+
+.books-list-page ul.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:50px;
+}
+.pagination li {
+  padding: 0;
+  margin: 0 10px;
+}
+.pagination li a:hover, .pagination li.paginationActive a {
+  background: #0079ff;
+  color: #fff;
+}
+.pagination li a {
+  border: 1px solid #0079ff;
+  padding: 5px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.pagination li {
+  padding: 0;
+  margin: 0 10px;
+}
+
+.pagination li.paginationDisabled a, .pagination li.paginationDisabled a:hover {
+  opacity: 0.5;
+  background: #fff;
+  color: #263546;
+  cursor: not-allowed;
+}

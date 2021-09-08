@@ -120,6 +120,9 @@
   header nav {
     width: 70%;
 }
+
+
+
 }
 
 @media only screen and (max-width:767px) {
@@ -259,6 +262,19 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 footer p {
   font-size: 18px;
 }
+
+/* Book List  */
+
+.books-list-page .books-list {
+  margin-left: -1.16%;
+  margin-right: -1.16%;
+}
+.books-list-page .books-list li {
+  width: 31%;
+  margin: 0 1.16%;
+  margin-bottom: 25px;
+}
+
 }
 
 @media only screen and (max-width:640px) {
@@ -316,6 +332,29 @@ header nav {
 header nav ul{justify-content: center;}
 footer p {
   font-size: 16px;
+}
+
+
+/* Book List  */
+
+.books-list-page .books-list {
+  margin-left: -1%;
+  margin-right: -1%;
+}
+.books-list-page .books-list li {
+  width: 48%;
+  margin: 0 1%;
+  margin-bottom: 25px;
+}
+.books-list-page ul.pagination{
+  margin-top: 30px;
+}
+.pagination li{
+  margin:0 2px;
+}
+.pagination li a{
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
 }
@@ -386,4 +425,22 @@ header nav ul {
   justify-content: center;
   flex-direction: column;
 }
+
+.books-list-page .books-list{
+  margin:0;
+  flex-direction: column;
+}
+
+  .books-list-page .books-list li{
+    width:100%;
+    margin:0;
+    margin-bottom:25px;
+  }
+  .books-list-page ul.pagination{
+    flex-wrap: wrap;
+  }
+  .pagination li{
+    margin-bottom:10px;
+  }
+
 }

@@ -11,6 +11,8 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3,
     },
+    password: { type: String, required: true },
+    remember: { type: Boolean },
   },
   {
     timestamps: true,

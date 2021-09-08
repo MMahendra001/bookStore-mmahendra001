@@ -13,27 +13,23 @@ import Footer from './Footer';
 import sampleBooks from '../sample-books';
 
 const AppRouter = function () {
-  // This is custom hook for our local storage
+  // This is custom hook for our local storage :: used it initially to develop frontend
   // const [books, setBooks] = useLocalStorage('books', [...sampleBooks]);
-  const [user, setUser] = useLocalStorage('user', {
-    userName: '',
-    password: '',
-  });
 
   const [books, setBooks] = useState([]);
-  console.log('books', books);
+  // console.log('books', books);
+  const [user, setUser] = useLocalStorage('user', {
+    username: '',
+    password: '',
+    remember: false,
+  });
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/books/', {
-        params: {
-          _limit: 3,
-        },
-      })
+      .get('http://localhost:5000/books/')
       .then((response) => {
         console.log(response.data);
         setBooks([...response.data]);
-        // console.log('databook', books);
       })
       .catch((error) => {
         console.log(error);
@@ -41,10 +37,6 @@ const AppRouter = function () {
   }, []);
 
   async function removeBook(bookId, bookID, booksState, setBooksState) {
-    // await axios
-    //   .delete(`http://localhost:5000/books/${bookId}`)
-    //   .then((res) => console.log(res.data));
-
     const filteredBookState = booksState.filter((booksObj) => {
       // console.log(booksObj);
       if (booksObj.id !== bookId) {
@@ -69,12 +61,12 @@ const AppRouter = function () {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header user={user} setUser={setUser} />
         {/* {BookContext will push the data down to it's child comp. without prop drilling
         - use provider method on it to pass value}
         - if it's Route then we have to use render props to pass props to the component it's routing to.
-        */}
-        <BookContext.Provider value={{ books, setBooks }}>
+      */}
+        <BookContext.Provider value={{ books, setBooks, user, setUser }}>
           <Switch>
             <Route exact path="/" component={Login} />
             {/* eslint-disable-next-line */}

@@ -1,5 +1,5 @@
 /* eslint-disable  */
-import React from 'react';
+import React ,{useState} from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import {formatePrice} from '../utils/helpers';
@@ -21,11 +21,7 @@ export default function BookList(props) {
 
       // Get books from database
       axios
-      .get('http://localhost:5000/books/',{
-        params: {
-          _limit: 3,
-        },
-      })
+      .get('http://localhost:5000/books/')
       .then((response) => {
         console.log(response.data);
         setBooks([...response.data]);
@@ -69,15 +65,54 @@ function BookEl(props){
   //If you check typeof books > object > because everything in javascript is an object.
   //Want to check if our books is an array? : Array.isArray(books) > true > you can use map,filter,reduce
 
+  //Create Pagination
+
+  // What is your current page number?
+  const [pageNumber,setPageNumber] = useState(0);
+
+  //How many books we want per page
+  const booksPerPage = 4;
+  const pagesVisited = pageNumber * booksPerPage;
+
+  //How many books to display
+
+  const displayBooks = books.slice(pagesVisited,pagesVisited + booksPerPage);
+
+  //How many pages are there?
+
+  const pageCount = Math.ceil(books.length / booksPerPage);
+
+  // Change page on click
+
+  function handleChangePage({selected}){
+    //selected is the number of page we want to move to.
+    setPageNumber(selected);
+  }
+
+  //TODO:Create Book Filter by Category and Ratings
+  //TODO:Sort Books by Ratings and Price.
+
   return (
     <>
       <ul className="books-list">
-          {books.map(function(book){
+          {displayBooks.map(function(book){
             let id = book.id;
             return <BookListEl key={id} book={book} removeBook={removeBook} books={books} setBooks={setBooks}></BookListEl>
           })
           }
       </ul>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={handleChangePage}
+        containerClassName={"pagination"}
+        previousLinkClassName={"previousBtn"}
+        nextLinkClassName={"nextBtn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+
+       />
     </>
     )
 };

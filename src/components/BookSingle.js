@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import wait from 'waait';
 import BookContext from '../context/BookContext';
@@ -18,7 +19,7 @@ export default function BookSingle({ history, match, location }) {
   instead of props drilling like : BookList
   */
 
-  const { books } = useContext(BookContext);
+  const { books, setBooks } = useContext(BookContext);
 
   const bookId = match.params.id;
 
